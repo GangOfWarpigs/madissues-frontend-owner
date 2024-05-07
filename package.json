@@ -1,0 +1,49 @@
+{
+  "name": "madissues-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@iconify/vue": "^4.1.2",
+    "@mdi/js": "^7.4.47",
+    "@radix-icons/vue": "^1.0.0",
+    "@tanstack/vue-query": "^5.32.0",
+    "@vee-validate/yup": "^4.12.6",
+    "axios": "^1.6.8",
+    "bootstrap-icons-vue": "^1.11.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "konva": "^9.3.6",
+    "lucide-vue-next": "^0.376.0",
+    "oh-vue-icons": "^1.0.0-rc3",
+    "path": "^0.12.7",
+    "radix-vue": "^1.7.3",
+    "shadcn-vue": "^0.10.3",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
+    "vee-validate": "^4.12.6",
+    "vite-plugin-vuetify": "^2.0.3",
+    "vue": "^3.3.11",
+    "vue-konva": "^3.0.2",
+    "vue-router": "^4.3.2",
+    "vue-toggles": "^2.1.0",
+    "vue3-carousel": "^0.3.3",
+    "vuetify": "^3.6.3",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.8",
+    "@vitejs/plugin-vue": "^4.5.2",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vue-tsc": "^1.8.25"
+  }
+}
