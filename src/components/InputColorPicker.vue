@@ -1,24 +1,51 @@
 <script setup lang="ts">
-const {label, placeholder} = defineProps<{
-    label : string,
-    placeholder : string
+import { useField } from 'vee-validate';
+
+// Define props
+const { label, placeholder, name } = defineProps<{
+  label: string;
+  placeholder: string;
+  name: string
 }>();
+
+// Color options
+const colors = ['#ef4444', '#f97316', '#10b981', '#0284c7'];
+
+// Field setup with vee-validate
+const { value, errorMessage, setTouched } = useField(name, (value: string) => {
+  if (!value || !colors.includes(value)) {
+    return 'Please select a valid color';
+  }
+  return true;
+});
+
+// Function to set the selected color
+const selectColor = (color: string) => {
+  value.value = color;
+  setTouched(true);
+};
 </script>
+
 <template>
-    <label class="font-semibold text-gray-500 ">{{ label }}</label>
-    <div class="relative cursor-pointer gap-4 flex justify-start mt-3">
-        <div class="w-8 h-8 bg-gray-800 transition-all rounded-full block ring-gray-800 hover:ring-2 ring-2 ring-offset-1 " ></div>
-        <div class="w-8 h-8 bg-red-500 transition-all rounded-full block ring-red-500 hover:ring-2 ring-offset-1 " ></div>
-        <div class="w-8 h-8 bg-blue-500 transition-all rounded-full block ring-blue-500 hover:ring-2 ring-offset-1 " ></div>
-        <div class="w-8 h-8 bg-green-500 transition-all rounded-full block ring-green-500 hover:ring-2 ring-offset-1 " ></div>
-        <div class="w-8 h-8  bg-orange-500 transition-all rounded-full block ring-orange-500 hover:ring-2  ring-offset-1 " ></div>
-        <div class="w-8 h-8 bg-amber-500 transition-all rounded-full block ring-amber-500 hover:ring-2 ring-offset-1 " ></div>
-        <div class="w-8 h-8 bg-yellow-500 transition-all rounded-full block ring-yellow-500 hover:ring-2 ring-offset-1 " ></div>
-    </div>
+  <label class="font-semibold text-gray-500 ">{{ label }}</label>
+  <div class="relative cursor-pointer gap-4 flex justify-start mt-3">
+    <div
+        v-for="color in colors"
+        :key="color"
+        @click="selectColor(color)"
+        :class="[
+        'w-8 h-8 transition-all rounded-full block',
+        value === color ? 'scale-[1]' : 'scale-50 hover:scale-[1]'
+      ]"
+        :style="`background-color: ${color}`"
+    ></div>
+  </div>
+  <!-- Error message display -->
+  <span v-if="errorMessage" class="text-red-500 mt-2">{{ errorMessage }}</span>
 </template>
 
 <style>
-  .ck-editor__editable {
-    min-height: 250px !important;
-   }
+.ck-editor__editable {
+  min-height: 250px !important;
+}
 </style>

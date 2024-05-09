@@ -6,6 +6,7 @@ import ProjectsHome from "../pages/base/projects/pages/projectsDetailed/pages/Pr
 import ProjectsStudents from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsStudents.vue";
 import ProjectsTeachers from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsTeachers.vue";
 import ProjectsCourses from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsCourse.vue";
+import ProjectsConfiguration from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsConfiguration.vue";
 
 
 export const base = [
@@ -44,6 +45,10 @@ export const base = [
                                 path: "courses",
                                 component: ProjectsCourses
                             },
+                            {
+                                path: "config",
+                                component: ProjectsConfiguration
+                            }
                         ]
                     }
                 ]

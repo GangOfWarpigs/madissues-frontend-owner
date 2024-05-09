@@ -14,7 +14,7 @@
     "@iconify/vue": "^4.1.2",
     "@mdi/js": "^7.4.47",
     "@radix-icons/vue": "^1.0.0",
-    "@tanstack/vue-query": "^5.32.0",
+    "@tanstack/vue-query": "^5.35.2",
     "@vee-validate/yup": "^4.12.6",
     "axios": "^1.6.8",
     "bootstrap-icons-vue": "^1.11.3",
