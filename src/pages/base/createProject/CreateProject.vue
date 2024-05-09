@@ -7,12 +7,13 @@ import InputRichText from '../../../components/InputRichText.vue';
 import InputColorPicker from '../../../components/InputColorPicker.vue';
 import {  useRouter } from 'vue-router'
 import {useForm} from "vee-validate";
-import {useMutation} from "@tanstack/vue-query";
+import {useMutation, useQueryClient} from "@tanstack/vue-query";
 import {signInFn} from "@/api/owners.ts";
 import {createOrganization, CreateOrganizationRequest} from "@/api/organizations.ts";
 
 const steps = ref(0)
 const router = useRouter()
+const queryClient = useQueryClient()
 
 
 const prev = () => {
@@ -40,8 +41,9 @@ const {mutate} = useMutation(
       onMutate() {
         resetForm()
       },
-      onSuccess(data) {
-        localStorage.setItem("token", data.token)
+      onSuccess() {
+        queryClient.clear()
+        router.push("/app/projects")
       },
     }
 )

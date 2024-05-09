@@ -15,6 +15,7 @@ const {mutate, error} = useMutation(
       mutationFn: async (request : SignUpRequest) =>  await signUpFn(request),
       onSuccess(data) {
         localStorage.setItem("token", data.token)
+        router.push("/app/projects")
       },
     },
 )
@@ -40,8 +41,8 @@ const handle = handleSubmit((values) => mutate(values))
         </div>
         <Input name="email" placeholder="Email" label="Email"/>
         <Input name="phone_number" placeholder="Mobile phone" label="phone"/>
-        <Input name="password" placeholder="password" label="Password"/>
-        <Input name="verify_password" placeholder="verify password" label="Verify password"/>
+        <Input type="password" name="password" placeholder="password" label="Password"/>
+        <Input type="password" name="verify_password" placeholder="verify password" label="Verify password"/>
         <FormButton @click="handle">Create account</FormButton>
         <button @click="router.push('signin')" class="mt-3 w-full bg-gray-100 px-4 py-3 rounded-full font-semibold text-gray-600 hover:bg-gray-200">Login</button>
         <p class="text-red-500">{{ error }}</p>

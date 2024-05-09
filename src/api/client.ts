@@ -19,7 +19,7 @@ export interface apiCall<Type>{
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
-        if (token) {
+        if (token !== null && token !== undefined) {
             config.headers["token"] = `${token}`;
         }
         return config;

@@ -12,10 +12,12 @@ export const auth : RouteRecordRaw[] =
             {
                 path : "signin",
                 component: SignIn,
+                name: "SignIn"
             },
             {
                 path : "signup",
-                component: SignUp
+                component: SignUp,
+                name: "SignUp"
             }
         ]
     }]

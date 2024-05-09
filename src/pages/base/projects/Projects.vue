@@ -1,15 +1,26 @@
-<template>
+<script setup lang="ts">
+import Header from "@/components/Header.vue";
+import {useQuery} from "@tanstack/vue-query";
+import {getAllOrganizations, OrganizationReadModel} from "@/api/organizations.ts";
 
+
+const { data, isSuccess } = useQuery<OrganizationReadModel[]>({
+  queryKey: ["organizations"],
+  queryFn: getAllOrganizations,
+});
+</script>
+<template>
     <div class="w-full h-[100vh] flex justify-center items-center flex-col">
+      <Header></Header>
         <div class="text-3xl mb-16 font-semibold text-gray-700">
             ¿En que organización quieres trabajar?
         </div>
-        <div class="flex w-full max-w-[1400px] justify-center gap-10">
-            <router-link to="deii/home" class="cursor-pointer group">
+        <div  class="flex w-full max-w-[1400px] justify-center gap-10">
+            <router-link v-for="org in data" :to="`/app/projects/${org.id}/home`" class="cursor-pointer group">
                 <div class="h-[180px] w-[180px] bg-blue-500 rounded-lg group-hover:border-[#0000006b] transition-all border-4 border-blue-500">
                 </div>
                 <div class=" text-gray-500 group-hover:text-gray-700  flex justify-center mt-3 font-semibold text-xl transition-all">
-                    Deii ULPGC
+                    {{ org.name }}
                 </div>
             </router-link>
 

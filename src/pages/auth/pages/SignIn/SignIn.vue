@@ -18,6 +18,7 @@ const {mutate, error} = useMutation(
       },
       onSuccess(data) {
           localStorage.setItem("token", data.token)
+        router.push("/app/projects/")
       },
     }
 )

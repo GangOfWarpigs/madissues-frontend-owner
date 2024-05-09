@@ -1,10 +1,9 @@
 import path from "path"
-import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
+import { defineConfig } from "vite"
 
 import tailwind from "tailwindcss"
 import autoprefixer from "autoprefixer"
-import vuetify from "vite-plugin-vuetify"
 
 export default defineConfig({
   css: {
@@ -12,18 +11,7 @@ export default defineConfig({
       plugins: [tailwind(), autoprefixer()],
     },
   },
-  plugins: [
-      vue({
-        template: {
-          compilerOptions: {
-            isCustomElement: (tag) => {
-              return tag.startsWith('v-')
-            }
-          }
-        }
-      }),
-      vuetify({ autoImport: true}),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

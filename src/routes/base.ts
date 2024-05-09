@@ -16,6 +16,7 @@ export const base = [
         children: [
             {
                 path: "projects",
+                name: "Projects",
                 children : [
                     {
                         path: "",
