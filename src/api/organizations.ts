@@ -81,8 +81,8 @@ export interface DegreesReadModel {
     name: string,
 }
 
-export const getOrganizationDegrees = async function (id : string) : Promise<TeacherReadModel[]> {
-    const response = await api.get<apiCall<TeacherReadModel[]>>("/organizations/" + id + "/teachers/");
+export const getOrganizationDegrees = async function (id : string) : Promise<DegreesReadModel[]> {
+    const response = await api.get<apiCall<DegreesReadModel[]>>("/organizations/" + id + "/teachers/");
     if(response.status !== 200) throw Error("Failed getting organiztions")
     return response.data.success
 };
