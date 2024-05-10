@@ -1,8 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import Input from '../../../../../../components/Input.vue';
+import {useQuery} from "@tanstack/vue-query";
+import {DegreesReadModel, getOrganizationDegrees} from "@/api/organizations.ts";
+import {useRoute} from "vue-router";
 
-const teachers = ref([0, 0, 0, 0, 0, 0]);
+const route = useRoute()
+const id = route.params["id"] as string
+
+
+const { data, isSuccess } = useQuery<DegreesReadModel[]>({
+  queryKey: ["organization", id, "courses"],
+  queryFn: () => getOrganizationDegrees(id),
+});
 </script>
 <template>
     <div>

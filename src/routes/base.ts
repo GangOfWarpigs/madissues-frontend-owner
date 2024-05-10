@@ -3,7 +3,7 @@ import CreateProject from "../pages/base/createProject/CreateProject.vue";
 import Projects from "../pages/base/projects/Projects.vue";
 import ProjectsDetailed from "../pages/base/projects/pages/projectsDetailed/ProjectsDetailed.vue";
 import ProjectsHome from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsHome.vue";
-import ProjectsStudents from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsStudents.vue";
+import ProjectsStudents from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsDegrees.vue";
 import ProjectsTeachers from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsTeachers.vue";
 import ProjectsCourses from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsCourse.vue";
 import ProjectsConfiguration from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsConfiguration.vue";
@@ -47,7 +47,7 @@ export const base = [
                                 component: ProjectsCourses
                             },
                             {
-                                path: "config",
+                                path: "configuration",
                                 component: ProjectsConfiguration
                             }
                         ]

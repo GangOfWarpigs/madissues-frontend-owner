@@ -1,8 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import Input from '../../../../../../components/Input.vue';
+import {useQuery} from "@tanstack/vue-query";
+import {CourseReadModel, getOrganizationCourses} from "@/api/organizations.ts";
+import {useRoute} from "vue-router";
 
-const teachers = ref([0, 0, 0, 0, 0, 0]);
+
+const route = useRoute()
+const id = route.params["id"] as string
+
+
+const { data, isSuccess } = useQuery<CourseReadModel[]>({
+  queryKey: ["organization", id, "courses"],
+  queryFn: () => getOrganizationCourses(id),
+});
 </script>
 <template>
     <div>
@@ -16,12 +26,12 @@ const teachers = ref([0, 0, 0, 0, 0, 0]);
             </button>
         </div>
         <div class="gap-2 grid-cols-4 grid">
-            <div  v-for="teacher in teachers" class="w-full flex-col py-10 justify-start items-start bg-gray-100 p-5 rounded-xl flex  px-10 gap-4 hover:bg-gray-200 cursor-pointer transition-all">
+            <div v-if="isSuccess"  v-for="course in data" class="w-full flex-col py-10 justify-start items-start bg-gray-100 p-5 rounded-xl flex  px-10 gap-4 hover:bg-gray-200 cursor-pointer transition-all">
                 <div class="w-[50px] h-[50px] bg-gray-500 rounded-full">
                 </div>
                 <div class="font-semibold">
-                    <h3 class="font-semibold">Mátematicas para Computadores</h3>
-                    <h5 class="text-sm text-gray-500 font-medium">MC</h5>
+                    <h3 class="font-semibold">{{ course.name }}</h3>
+                    <h5 class="text-sm text-gray-500 font-medium">{{ course.code }}</h5>
 
                 </div>
             </div>

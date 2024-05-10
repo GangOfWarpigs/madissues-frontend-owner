@@ -8,7 +8,6 @@ import InputColorPicker from '../../../components/InputColorPicker.vue';
 import {  useRouter } from 'vue-router'
 import {useForm} from "vee-validate";
 import {useMutation, useQueryClient} from "@tanstack/vue-query";
-import {signInFn} from "@/api/owners.ts";
 import {createOrganization, CreateOrganizationRequest} from "@/api/organizations.ts";
 
 const steps = ref(0)

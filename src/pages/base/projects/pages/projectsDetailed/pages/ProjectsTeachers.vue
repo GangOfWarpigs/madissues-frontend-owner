@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Input from '../../../../../../components/Input.vue';
+import {useRoute} from "vue-router";
+import {useQuery} from "@tanstack/vue-query";
+import {TeacherReadModel, getOrganizationTeachers} from "@/api/organizations.ts";
 
-const teachers = ref([0, 0, 0, 0, 0, 0]);
+
+const route = useRoute()
+const id = route.params["id"] as string
+
+
+const { data, isSuccess } = useQuery<TeacherReadModel[]>({
+  queryKey: ["organization", id, "courses"],
+  queryFn: () => getOrganizationTeachers(id),
+});
 </script>
 <template>
     <div>
@@ -15,8 +26,8 @@ const teachers = ref([0, 0, 0, 0, 0, 0]);
                 Add new teacher
             </button>
         </div>
-        <div class="gap-2 flex flex-col">
-            <div  v-for="teacher in teachers" class="w-full bg-gray-100 p-5 rounded-xl flex items-center gap-4 hover:bg-gray-200 cursor-pointer transition-all">
+        <div v-if="isSuccess" class="gap-2 flex flex-col">
+            <div  v-for="teacher in data" class="w-full bg-gray-100 p-5 rounded-xl flex items-center gap-4 hover:bg-gray-200 cursor-pointer transition-all">
                 <div class="w-[50px] h-[50px] bg-gray-500 rounded-full">
                 </div>
                 <div class="font-semibold">
