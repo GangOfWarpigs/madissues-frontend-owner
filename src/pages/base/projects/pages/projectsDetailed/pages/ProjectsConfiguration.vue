@@ -1,24 +1,57 @@
 <script lang="ts" setup>
-import {useForm} from "vee-validate";
-import InputRichText from "@/components/InputRichText.vue";
-import Input from "@/components/Input.vue";
+  import { useRoute } from 'vue-router';
 
-const {} = useForm()
-
+  const currentRoute: string = useRoute().fullPath;
+  const splittedRoute: string[] = currentRoute.split('/');
+  splittedRoute.pop();
+  const baseRoute: string = splittedRoute.join('/');
 </script>
 <template>
-      <img class="w-[100px] h-[100px] rounded-full bg-gray-100">
-      <h1 class="font-semibold text-3xl mt-5">Delegación de estudiantes ULPGC</h1>
-      <div class="mt-5 p-8 bg-gray-100 rounded-2xl">
-        <h1 class="text-lg font-semibold mb-5">Configura tu cuenta</h1>
-        <Input name="name" className="bg-white !p-3 !mb-2" label="name"></Input>
-        <Input name="contact_info" className="bg-white !p-3" label="contact information"></Input>
-      </div>
-      <div class="mt-5 p-8 bg-gray-100 rounded-2xl">
-        <h1 class="text-lg font-semibold mb-5">Configura tu página</h1>
-        <InputRichText label="" name="description"></InputRichText>
-      </div>
-      <div class="flex justify-between mt-3">
-        <button class="bg-blue-500 p-2 hover:bg-blue-600 cursor-pointer px-12 text-white rounded-xl font-semibold">Guardar</button>
-      </div>
+  <div class="w-full min-h-screen flex pl-[300px]">
+    <div class="w-[320px] border-r-2 py-10 px-5 h-screen fixed">
+      <nav class="w-full flex flex-col">
+        <ul class="w-full flex flex-col space-y-5">
+          <li class="flex">
+            <router-link 
+              :to="baseRoute + '/general'" 
+              active-class="!bg-gray-100" 
+              class="px-4 py-3 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-600"
+              replace>
+              General Settings
+            </router-link>
+          </li>
+          <li class="flex">
+            <router-link 
+              :to="baseRoute + '/organization'" 
+              active-class="!bg-gray-100" 
+              class="px-4 py-3 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-600"
+              replace>
+              Organization Settings
+            </router-link>
+          </li>
+          <li class="flex">
+            <router-link 
+              :to="baseRoute + '/integrations'" 
+              active-class="!bg-gray-100" 
+              class="px-4 py-3 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-600"
+              replace>
+              Integrations
+            </router-link>
+          </li>
+          <li class="flex">
+            <router-link 
+              :to="baseRoute + '/change'" 
+              active-class="!bg-gray-100" 
+              class="px-4 py-3 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-600"
+              replace>
+              Change Project
+            </router-link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="w-full flex flex-col px-20 py-10 box-border ml-[400px]">
+      <router-view></router-view>
+    </div>
+  </div>  
 </template>

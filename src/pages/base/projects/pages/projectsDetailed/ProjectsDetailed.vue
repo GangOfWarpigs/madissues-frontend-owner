@@ -3,7 +3,6 @@
 import {useQuery} from "@tanstack/vue-query";
 import { getOrganizationById, OrganizationReadModel} from "@/api/organizations.ts";
 import {useRoute} from "vue-router";
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 const route = useRoute()
 const id = route.params["id"] as string
@@ -21,26 +20,26 @@ const { data, isSuccess } = useQuery<OrganizationReadModel>({
                 <h1 class="font-semibold text-3xl mb-8">
                   {{ data.name }}
                 </h1>
-                <router-link to="home" active-class="!bg-red-500 !text-white" class="text-gray-400 hover:bg-gray-200 hover:text-gray-600 px-4 py-3 rounded-xl cursor-pointer font-semibold flex gap-3 items-center">
+                <router-link :to="{name: 'home'}" active-class="!bg-red-500 !text-white" class="text-gray-400 hover:bg-gray-200 hover:text-gray-600 px-4 py-3 rounded-xl cursor-pointer font-semibold flex gap-3 items-center">
                     <vue-icon name="ri-home-smile-2-fill" scale="1.2"></vue-icon>
                     Home
                 </router-link>
-                <router-link to="teachers" active-class="!bg-red-500 !text-white " class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
+                <router-link :to="{name: 'teachers'}" active-class="!bg-red-500 !text-white " class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
                     <vue-icon name="hi-solid-academic-cap" scale="1.2"></vue-icon>
                     Teachers
                 </router-link>
 
-                <router-link to="courses" active-class="!bg-red-500 !text-white " class="px-4 py-3 hover:bg-gray-200  hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
+                <router-link :to="{name: 'courses'}" active-class="!bg-red-500 !text-white " class="px-4 py-3 hover:bg-gray-200  hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
                     <vue-icon name="hi-solid-book-open" scale="1.2"></vue-icon>
                     Courses
                 </router-link>
-                <router-link to="students"  active-class="!bg-red-500 !text-white " class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
+                <router-link :to="{name: 'degrees'}"  active-class="!bg-red-500 !text-white " class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
                     <vue-icon name="bi-postcard-fill" scale="1.2"></vue-icon>
                     Degrees
                 </router-link>
             </div>
             <div>
-                <router-link to="configuration" active-class="!bg-red-500 !text-white "  class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
+                <router-link to="configuration/organization" active-class="!bg-red-500 !text-white "  class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
                     <vue-icon name="hi-solid-cog" scale="1.2"></vue-icon>
                     Configuration
                 </router-link>
@@ -48,8 +47,5 @@ const { data, isSuccess } = useQuery<OrganizationReadModel>({
             </div>
         </div>
     </div>
-    <div class="ml-[300px] px-20 py-10 text-gray-700">
-        <router-view></router-view>
-    </div>
-
+    <router-view></router-view>
 </template>
