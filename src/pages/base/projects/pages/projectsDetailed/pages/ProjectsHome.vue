@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import BarChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/BarChart.vue";
 import {ref} from "vue";
 import DoughnutChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/DoughnutChart.vue";
 import LineChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/LineChart.vue";
-
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 const courses = ref(["Primer año", "Segundo año", "Tercer año", "Cuarto año"])
 const selectedCourse = ref(courses.value[0]);
@@ -25,7 +22,7 @@ const selectedCourse = ref(courses.value[0]);
   <div class="grid grid-cols-2 grid-rows-2 gap-5">
   <div class="flex flex-col bg-gray-100 p-2 rounded-3xl h-full w-full">
     <h1 class="text-center text-gray-500">Issues per subjects</h1>
-    <BarChart :selectedCourse="selectedCourse"></BarChart>
+    <BarChart></BarChart>
   </div>
   <div class="flex flex-col bg-gray-100 p-2 rounded-3xl h-full w-full">
     <h1 class="text-center text-gray-500">Issues durante el curso 2023-2024</h1>
