@@ -1,4 +1,9 @@
+<script setup lang="ts">
+    import PageContainer from '@/components/PageContainer.vue';
+</script>
 
 <template>
-    home
+    <PageContainer>
+        home
+    </PageContainer>
 </template>

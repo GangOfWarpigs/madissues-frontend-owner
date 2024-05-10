@@ -40,7 +40,7 @@ const { data, isSuccess } = useQuery<OrganizationReadModel>({
                 </router-link>
             </div>
             <div>
-                <router-link to="configuration" active-class="!bg-red-500 !text-white "  class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
+                <router-link to="configuration/organization" active-class="!bg-red-500 !text-white "  class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
                     <vue-icon name="hi-solid-cog" scale="1.2"></vue-icon>
                     Configuration
                 </router-link>
@@ -48,8 +48,5 @@ const { data, isSuccess } = useQuery<OrganizationReadModel>({
             </div>
         </div>
     </div>
-    <div class="ml-[300px] px-20 py-10 text-gray-700">
-        <router-view></router-view>
-    </div>
-
+    <router-view></router-view>
 </template>
