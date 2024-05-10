@@ -5,6 +5,7 @@ import {DegreesReadModel, getOrganizationDegrees} from "@/api/organizations.ts";
 import {useRoute} from "vue-router";
 import ProjectCreateDegreeForm from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectCreateDegreeForm.vue";
 import PageContainer from '@/components/PageContainer.vue';
+import Empty from "@/components/Empty.vue";
 
 const route = useRoute()
 const id = route.params["id"] as string
@@ -17,13 +18,14 @@ const { data, isSuccess } = useQuery<DegreesReadModel[]>({
 <template>
     <PageContainer>
         <div>
-            <h1 class="text-3xl font-semibold">Students</h1>
+            <h1 class="text-3xl font-semibold">Degrees</h1>
         </div>
         <div class="mt-10 ">
             <div class="flex justify-between mb-3">
                 <input class="bg-gray-100 p-2 px-3 rounded-lg" placeholder="Search by teacher...">
                 <ProjectCreateDegreeForm></ProjectCreateDegreeForm>
             </div>
+            <Empty v-if="isSuccess && data?.length == 0"></Empty>
             <div v-if="isSuccess" class="gap-2 flex flex-col">
                 <div  v-for="degree in data" class="w-full bg-gray-100 p-5 rounded-xl flex items-center gap-4 hover:bg-gray-200 cursor-pointer transition-all">
                     <div class="font-semibold">
