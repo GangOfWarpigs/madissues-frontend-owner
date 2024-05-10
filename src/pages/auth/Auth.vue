@@ -4,6 +4,8 @@
 
 <template>
   <router-view></router-view>
+
+  <page-banner></page-banner>
 </template>
 
 <style scoped>

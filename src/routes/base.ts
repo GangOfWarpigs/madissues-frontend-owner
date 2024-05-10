@@ -47,7 +47,7 @@ export const base = [
                                 component: ProjectsCourses
                             },
                             {
-                                path: "config",
+                                path: "configuration",
                                 component: ProjectsConfiguration
                             }
                         ]

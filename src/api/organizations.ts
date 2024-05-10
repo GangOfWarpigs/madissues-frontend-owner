@@ -30,13 +30,13 @@ export interface OrganizationReadModel{
     secondary_color: string
 }
 export const getAllOrganizations = async function () : Promise<OrganizationReadModel[]> {
-    const response = await api.get<OrganizationReadModel[]>("/organizations/");
+    const response = await api.get<apiCall<OrganizationReadModel[]>>("/organizations/");
     if(response.status !== 200) throw Error("Failed getting organiztions")
-    return response.data
+    return response.data.success
 };
 
 export const getOrganizationById = async function (id : string) : Promise<OrganizationReadModel> {
-    const response = await api.get<OrganizationReadModel>("/organizations/" + id + "/");
+    const response = await api.get<apiCall<OrganizationReadModel>>("/organizations/" + id + "/");
     if(response.status !== 200) throw Error("Failed getting organiztions")
-    return response.data
+    return response.data.success
 };
