@@ -2,6 +2,7 @@
 import Header from "@/components/Header.vue";
 import {useQuery} from "@tanstack/vue-query";
 import {getAllOrganizations, OrganizationReadModel} from "@/api/organizations.ts";
+import {baseUrl} from "@/api/client.ts";
 
 
 const { data, isSuccess } = useQuery<OrganizationReadModel[]>({
@@ -17,8 +18,7 @@ const { data, isSuccess } = useQuery<OrganizationReadModel[]>({
         </div>
         <div  class="flex w-full max-w-[1400px] justify-center gap-10">
             <router-link v-for="org in data" :to="`/app/projects/${org.id}/home`" class="cursor-pointer group">
-                <div class="h-[180px] w-[180px] bg-blue-500 rounded-lg group-hover:border-[#0000006b] transition-all border-4 border-blue-500">
-                </div>
+                <img :style="`background-color: ${org.primary_color}; border-color: ${org.primary_color}`" :src="baseUrl + '/' + org.logo" class="h-[180px] w-[180px] bg-blue-500 rounded-lg group-hover:!border-black/60 transition-all border-4 "/>
                 <div class=" text-gray-500 group-hover:text-gray-700  flex justify-center mt-3 font-semibold text-xl transition-all">
                     {{ org.name }}
                 </div>

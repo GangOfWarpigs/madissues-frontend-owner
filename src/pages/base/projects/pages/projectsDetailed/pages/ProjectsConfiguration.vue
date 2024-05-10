@@ -40,7 +40,7 @@
           </li>
           <li class="flex">
             <router-link 
-              :to="baseRoute + '/change'" 
+              to="/app/projects/"
               active-class="!bg-gray-100" 
               class="px-4 py-3 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-600"
               replace>
