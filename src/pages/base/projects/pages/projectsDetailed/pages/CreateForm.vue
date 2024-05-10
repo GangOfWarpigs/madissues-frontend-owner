@@ -5,7 +5,7 @@
         @click="openModal"
         class="font-semibold rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
     >
-      <slot></slot>
+      {{ name }}
     </button>
   </div>
   <TransitionRoot appear :show="isOpen" as="template">
@@ -42,10 +42,10 @@
                   as="h3"
                   class="text-lg font-medium leading-6 text-gray-900"
               >
-                Create new degree
+                {{ title }}
               </DialogTitle>
               <div class="mt-4 mb-6">
-                <SmallInput name="name" label="name" placeholder="name of the subject" type=""></SmallInput>
+                <slot></slot>
               </div>
 
               <div class="mt-4">
@@ -65,8 +65,8 @@
   </TransitionRoot>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, defineProps } from 'vue'
 import {
   TransitionRoot,
   TransitionChild,
@@ -74,7 +74,6 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
-import SmallInput from "@/components/SmallInput.vue";
 
 const isOpen = ref(false)
 
@@ -84,4 +83,7 @@ function closeModal() {
 function openModal() {
   isOpen.value = true
 }
+
+const {title, name} = defineProps<{name:string, title: string}>();
+
 </script>
