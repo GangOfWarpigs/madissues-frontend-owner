@@ -23,14 +23,14 @@
 
 <template>
     <label class="font-semibold text-gray-500">{{ label }}</label>
-    <div class="relative cursor-pointer gap-5 flex justify-start my-4 items-center ">
+    <div class="relative cursor-pointer gap-6 flex justify-start my-4 items-center ">
         <vue-icon 
             v-for="icon in icons"
             :key="icon"
             @click="selectIcon(icon)"
             :class="[
-                'w-7 h-7 text-gray-500 transition-all rounded-full block',
-                value === icon ? 'scale-[1.3]' : 'scale-100 hover:scale-[1.3]'
+                'w-7 h-7 text-gray-500 transition-all rounded-full block scale-[0.9]',
+                value === icon ? 'text-red-500 !scale-[1.3]' : 'scale-100 hover:scale-[1.1]'
             ]"
             :name="icon"
         />
