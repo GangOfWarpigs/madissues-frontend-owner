@@ -7,7 +7,7 @@ const {label, placeholder, name, type, className} = defineProps<{
     placeholder : string
     name: string,
     className : string | null,
-  type: string
+    type: string
 }>()
 
 const { value, errorMessage } = useField(() => name);

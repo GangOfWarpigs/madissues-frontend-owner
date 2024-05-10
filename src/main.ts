@@ -11,10 +11,13 @@ import * as IoIcons from "oh-vue-icons/icons/io";
 import * as RiIcons from "oh-vue-icons/icons/ri";
 import * as HiIcons from "oh-vue-icons/icons/hi";
 import * as MdIcons from "oh-vue-icons/icons/md";
+import * as GiIcons from "oh-vue-icons/icons/gi";
+import * as LaIcons from "oh-vue-icons/icons/la";
+import * as CoIcons from "oh-vue-icons/icons/co";
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import CKEditor from '@ckeditor/ckeditor5-vue';
 
-const icons = Object.values({ ...FaIcons, ...BiIcons, ...IoIcons, ...RiIcons, ...HiIcons, ...MdIcons });
+const icons = Object.values({ ...FaIcons, ...BiIcons, ...IoIcons, ...RiIcons, ...HiIcons, ...MdIcons, ...GiIcons, ...LaIcons, ...CoIcons });
 addIcons(...icons);
 
 createApp(App)
