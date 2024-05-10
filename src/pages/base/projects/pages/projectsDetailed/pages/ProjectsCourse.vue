@@ -3,6 +3,7 @@ import Input from '../../../../../../components/Input.vue';
 import {useQuery} from "@tanstack/vue-query";
 import {CourseReadModel, getOrganizationCourses} from "@/api/organizations.ts";
 import {useRoute} from "vue-router";
+import ProjectCreateCourseForm from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectCreateCourseForm.vue";
 
 
 const route = useRoute()
@@ -21,9 +22,8 @@ const { data, isSuccess } = useQuery<CourseReadModel[]>({
     <div class="mt-10 ">
         <div class="flex justify-between mb-3">
             <input class="bg-gray-100 p-2 px-3 rounded-lg" placeholder="Search by teacher...">
-            <button class="p-2 px-3 bg-red-500 rounded-lg text-white  font-semibold">
-                Add new teacher
-            </button>
+            <ProjectCreateCourseForm/>
+
         </div>
         <div class="gap-2 grid-cols-4 grid">
             <div v-if="isSuccess"  v-for="course in data" class="w-full flex-col py-10 justify-start items-start bg-gray-100 p-5 rounded-xl flex  px-10 gap-4 hover:bg-gray-200 cursor-pointer transition-all">
