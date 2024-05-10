@@ -3,10 +3,14 @@
   import SmallInput from "@/components/SmallInput.vue";
   import InputColorPicker from "@/components/InputColorPicker.vue";
   import InputIconPicker from "@/components/InputIconPicker.vue";
+  import { useRoute } from "vue-router";
+
+  const route = useRoute();
+  const id = route.params["id"] as string;
 </script>
 
 <template>
-  <CreateForm title="Add course" name="Add course">
+  <CreateForm title="Add course" name="Add course" :url="'/organizations/'+id+'/courses/'">
     <SmallInput label="Name" placeholder="Write a name..." name="courseName" type="text" className="mb-4"/>
     <SmallInput label="Code" placeholder="Write the course's code name..." name="courseCode" type="text" className="mb-4"/>
     <InputIconPicker label="Icon" name="courseIcon"/>
