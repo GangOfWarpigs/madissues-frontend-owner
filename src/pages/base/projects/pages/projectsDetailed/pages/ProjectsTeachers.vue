@@ -31,8 +31,8 @@ const { data, isSuccess } = useQuery<TeacherReadModel[]>({
                 <div class="w-[50px] h-[50px] bg-gray-500 rounded-full">
                 </div>
                 <div class="font-semibold">
-                    <h3 class="font-semibold">Jose R. Peña Seco</h3>
-                    <h5 class="text-sm text-gray-500 font-medium">josericardopenase@gmail.com</h5>
+                    <h3 class="font-semibold">{{ teacher.first_name }} {{ teacher.last_name}}</h3>
+                    <h5 class="text-sm text-gray-500 font-medium">{{ teacher.email }}</h5>
 
                 </div>
             </div>
