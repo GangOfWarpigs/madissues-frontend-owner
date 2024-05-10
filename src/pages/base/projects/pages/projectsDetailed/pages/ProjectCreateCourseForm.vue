@@ -11,10 +11,10 @@
 
 <template>
   <CreateForm title="Add course" name="Add course" :url="'/organizations/'+id+'/courses/'">
-    <SmallInput label="Name" placeholder="Write a name..." name="courseName" type="text" className="mb-4"/>
-    <SmallInput label="Code" placeholder="Write the course's code name..." name="courseCode" type="text" className="mb-4"/>
-    <InputIconPicker label="Icon" name="courseIcon"/>
-    <InputColorPicker label="Primary color" name="courseColor"/>
-    <InputColorPicker label="Secondary color" name="courseColor"/>
+    <SmallInput label="Name" placeholder="Write a name..." name="name" type="text" className="mb-4"/>
+    <SmallInput label="Code" placeholder="Write the course's code name..." name="code" type="text" className="mb-4"/>
+    <InputIconPicker label="Icon" name="icon"/>
+    <InputColorPicker label="Primary color" name="primary_color"/>
+    <InputColorPicker label="Secondary color" name="secondary_color"/>
   </CreateForm>
 </template>
