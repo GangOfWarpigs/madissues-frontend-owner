@@ -46,9 +46,7 @@ export interface CourseReadModel {
     id: string,
     owner_id: string,
     name: string,
-    logo: string,
-    description: string,
-    contact_info: string,
+    icon: string,
     primary_color: string,
     secondary_color: string
 }

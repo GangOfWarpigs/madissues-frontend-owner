@@ -27,12 +27,12 @@ const { data, isSuccess } = useQuery<CourseReadModel[]>({
         </div>
         <div class="gap-2 grid-cols-4 grid">
             <div v-if="isSuccess"  v-for="course in data" class="w-full flex-col py-10 justify-start items-start bg-gray-100 p-5 rounded-xl flex  px-10 gap-4 hover:bg-gray-200 cursor-pointer transition-all">
-                <div class="w-[50px] h-[50px] bg-gray-500 rounded-full">
+                <div :style="`background: linear-gradient(90deg, ${course.primary_color} 0%, ${course.secondary_color} 100%);`" class="w-[50px] h-[50px] bg-gray-500 rounded-full flex justify-center items-center text-white text-size-xl">
+                  <vue-icon :name="course.icon" scale="1.5"></vue-icon>
                 </div>
                 <div class="font-semibold">
                     <h3 class="font-semibold">{{ course.name }}</h3>
                     <h5 class="text-sm text-gray-500 font-medium">{{ course.code }}</h5>
-
                 </div>
             </div>
         </div>

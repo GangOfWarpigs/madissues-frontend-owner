@@ -20,6 +20,5 @@ const {} = useForm()
       </div>
       <div class="flex justify-between mt-3">
         <button class="bg-blue-500 p-2 hover:bg-blue-600 cursor-pointer px-12 text-white rounded-xl font-semibold">Guardar</button>
-
       </div>
 </template>
