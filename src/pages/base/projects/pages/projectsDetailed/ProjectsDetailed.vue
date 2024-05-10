@@ -19,7 +19,7 @@ const { data, isSuccess } = useQuery<OrganizationReadModel>({
         <div class="flex flex-col justify-between h-full">
             <div class="flex flex-col gap-3 ">
               <div class="flex items-center mb-8 gap-5">
-                <img  width="30" :src="baseUrl + '/' + data.logo" class="rounded-full">
+                <img  width="42" :src="baseUrl + '/' + data.logo" class="rounded-full">
                 <h1 class="font-semibold text-2xl">
                   {{ data.name }}
                 </h1>
