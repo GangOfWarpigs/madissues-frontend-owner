@@ -1,8 +1,9 @@
 import axios from "axios";
 
+export const baseUrl ='http://localhost:8000'
 
 const api = axios.create({
-    baseURL: 'http://localhost:8000'
+    baseURL: baseUrl
 });
 
 export interface apiCall<Type>{
