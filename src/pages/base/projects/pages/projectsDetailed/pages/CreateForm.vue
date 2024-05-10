@@ -1,3 +1,60 @@
+<script setup lang="ts">
+import { ref, defineProps } from 'vue'
+import {
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+} from '@headlessui/vue'
+import {useForm} from "vee-validate";
+import {useMutation, useQueryClient} from "@tanstack/vue-query";
+import api, {apiCall} from "@/api/client.ts";
+import {useRoute} from "vue-router";
+
+const isOpen = ref(false)
+
+function closeModal() {
+  isOpen.value = false
+}
+function openModal() {
+  isOpen.value = true
+}
+
+const {title, url, name} = defineProps<{name:string, title: string, url : string}>();
+
+const route = useRoute()
+const id = route.params["id"] as string
+
+const { handleSubmit} = useForm<any>({
+  initialValues: {
+    organization_id: id
+  }
+})
+const queryClient = useQueryClient()
+
+const createFn = async function (request: any ) {
+  const response = await api.post<apiCall<any>>(url, {
+    ...request
+  });
+  if (response.data.error) {
+    throw Error(response.data.error.error_message);
+  }
+  return response.data.success
+};
+
+const {mutate, error} = useMutation({
+      mutationFn: createFn,
+      onSuccess() {
+        queryClient.refetchQueries({queryKey: ["organization", id]})
+        closeModal()
+      },
+    }
+)
+
+const submit = handleSubmit((values) => mutate(values))
+
+</script>
 <template>
   <div >
     <button
@@ -36,7 +93,7 @@
               leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-                class="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                class="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
                   as="h3"
@@ -49,10 +106,11 @@
               </div>
 
               <div class="mt-4">
+                <p class="text-red-500 mb-6">{{ error }}</p>
                 <button
                     type="button"
                     class="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    @click="closeModal"
+                    @click="submit"
                 >
                   Create
                 </button>
@@ -65,25 +123,3 @@
   </TransitionRoot>
 </template>
 
-<script setup lang="ts">
-import { ref, defineProps } from 'vue'
-import {
-  TransitionRoot,
-  TransitionChild,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/vue'
-
-const isOpen = ref(false)
-
-function closeModal() {
-  isOpen.value = false
-}
-function openModal() {
-  isOpen.value = true
-}
-
-const {title, name} = defineProps<{name:string, title: string}>();
-
-</script>

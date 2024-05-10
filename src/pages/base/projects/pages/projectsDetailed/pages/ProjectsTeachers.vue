@@ -4,6 +4,8 @@ import Input from '../../../../../../components/Input.vue';
 import {useRoute} from "vue-router";
 import {useQuery} from "@tanstack/vue-query";
 import {TeacherReadModel, getOrganizationTeachers} from "@/api/organizations.ts";
+import ProjectCreateTeachersForm
+  from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectCreateTeachersForm.vue";
 
 
 const route = useRoute()
@@ -22,9 +24,7 @@ const { data, isSuccess } = useQuery<TeacherReadModel[]>({
     <div class="mt-10 ">
         <div class="flex justify-between mb-3">
             <input class="bg-gray-100 p-2 px-3 rounded-lg" placeholder="Search by teacher...">
-            <button class="p-2 px-3 bg-red-500 rounded-lg text-white  font-semibold">
-                Add new teacher
-            </button>
+            <ProjectCreateTeachersForm></ProjectCreateTeachersForm>
         </div>
         <div v-if="isSuccess" class="gap-2 flex flex-col">
             <div  v-for="teacher in data" class="w-full bg-gray-100 p-5 rounded-xl flex items-center gap-4 hover:bg-gray-200 cursor-pointer transition-all">
