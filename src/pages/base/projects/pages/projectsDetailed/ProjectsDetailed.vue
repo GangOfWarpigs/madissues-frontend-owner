@@ -35,12 +35,12 @@ const { data, isSuccess } = useQuery<OrganizationReadModel>({
                     Courses
                 </router-link>
                 <router-link to="students"  active-class="!bg-red-500 !text-white " class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
-                    <vue-icon name="md-people" scale="1.2"></vue-icon>
-                    Students
+                    <vue-icon name="bi-postcard-fill" scale="1.2"></vue-icon>
+                    Degrees
                 </router-link>
             </div>
             <div>
-                <router-link to="configuration"  class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
+                <router-link to="configuration" active-class="!bg-red-500 !text-white "  class="px-4 py-3 hover:bg-gray-200 hover:text-gray-600 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-400">
                     <vue-icon name="hi-solid-cog" scale="1.2"></vue-icon>
                     Configuration
                 </router-link>
