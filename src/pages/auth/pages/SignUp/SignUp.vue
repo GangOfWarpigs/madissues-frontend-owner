@@ -5,10 +5,11 @@ import Input from '../../../../components/Input.vue';
 import {useMutation, } from "@tanstack/vue-query";
 import {useForm} from "vee-validate";
 import {signUpFn, SignUpRequest} from "../../../../api/owners.ts";
+import * as yup from "yup";
 
 const router = useRouter()
 
-const {handleSubmit} = useForm<SignUpRequest>()
+
 
 const {mutate, error} = useMutation(
     {
@@ -19,6 +20,35 @@ const {mutate, error} = useMutation(
       },
     },
 )
+
+const schema = yup.object({
+  email: yup.string().required("Email is required*").email("Invalid email address"),
+  first_name: yup.string().required("First name is required*"),
+  last_name: yup.string().required("Last name is required*"),
+  phone_number: yup.string().required("Phone number is required*"),
+  password : yup
+      .string()
+      .required("Password is required*")
+      .matches(
+          /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$/,
+          'Password must contain at least one uppercase letter, one number and must be at least 8 characters'
+      ),
+  verify_password: yup
+      .string()
+      .oneOf([yup.ref('password'), ''], 'Passwords must match')
+})
+
+const { handleSubmit } = useForm<SignUpRequest>({
+  validationSchema: schema,
+  initialValues: {
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    email: "",
+    password: "",
+    verify_password: ""
+  }
+})
 
 const handle = handleSubmit((values) => mutate(values))
 

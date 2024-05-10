@@ -5,10 +5,10 @@ import Input from '../../../../components/Input.vue';
 import {useMutation, } from "@tanstack/vue-query";
 import {useForm} from "vee-validate";
 import {signInFn} from "../../../../api/owners.ts";
+import * as yup from "yup";
 
 const router = useRouter()
 
-const {resetForm, handleSubmit} = useForm<{email : string, password : string}>()
 
 const {mutate, error} = useMutation(
     {
@@ -22,6 +22,25 @@ const {mutate, error} = useMutation(
       },
     }
 )
+
+const schema = yup.object({
+  email: yup.string().required("Email is required*").email("Invalid email address"),
+  password : yup
+      .string()
+      .required("Password is required*")
+      .matches(
+          /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$/,
+          'Password must contain at least one uppercase letter, one number and must be at least 8 characters'
+      ),
+})
+
+const {resetForm, handleSubmit} = useForm<{email : string, password : string}>({
+  validationSchema: schema,
+  initialValues: {
+    email: "",
+    password: "",
+  }
+})
 
 const handle = handleSubmit((values) => mutate(values))
 
