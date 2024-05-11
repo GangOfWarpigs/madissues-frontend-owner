@@ -9,6 +9,8 @@ const { data, isSuccess } = useQuery<OrganizationReadModel[]>({
   queryKey: ["organizations"],
   queryFn: getAllOrganizations,
 });
+const calculateGradient =  (color1: string, color2: string) => `background: linear-gradient(90deg, ${color1} 0%, ${color2} 100%);`
+
 </script>
 <template>
     <div class="w-full h-[100vh] flex justify-center items-center flex-col">
@@ -17,8 +19,8 @@ const { data, isSuccess } = useQuery<OrganizationReadModel[]>({
             ¿En que organización quieres trabajar?
         </div>
         <div  class="flex w-full max-w-[1400px] justify-center gap-10">
-            <router-link v-for="org in data" :to="`/app/projects/${org.id}/home`" class="cursor-pointer group">
-                <img :style="`background-color: ${org.primary_color}; border-color: ${org.primary_color}`" :src="baseUrl + '/' + org.logo" class="h-[180px] w-[180px] bg-blue-500 rounded-lg group-hover:!border-black/60 transition-all border-4 "/>
+            <router-link v-for="org in data" :to="`/app/projects/${org.id}/home`" class="cursor-pointer group hover:scale-[1.1] transition-all duration-500">
+                <img :style="`${calculateGradient(org.primary_color, org.secondary_color)};`" :src="baseUrl + '/' + org.logo" class="h-[180px] w-[180px] bg-blue-500 rounded-lg  "/>
                 <div class=" text-gray-500 group-hover:text-gray-700  flex justify-center mt-3 font-semibold text-xl transition-all">
                     {{ org.name }}
                 </div>
