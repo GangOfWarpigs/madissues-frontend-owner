@@ -35,7 +35,7 @@ const schemas = [
     contact_info: yup.string().required("Contact info is required*").max(80),
   }),
   yup.object({
-    logo: yup.string().required("Logo is required*"),
+    logo: yup.string().required("Logo is required*")
   }),
   yup.object({
     description: yup.string().required("Description is required*").max(280),

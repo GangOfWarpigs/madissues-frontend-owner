@@ -24,7 +24,8 @@ const schema = yup.object({
   first_name: yup.string().required("First name is required*"),
   last_name: yup.string().required("Last name is required*"),
   email: yup.string().required("Email is required*").email("Invalid email address"),
-  office_link: yup.string().required("Office link is required*"),
+  office_link: yup.string().required("Office link is required*")
+      .matches(/^https:\/\/www\.dis\.ulpgc\.es\/.*$/, 'Must be a link to dis.ulpgc.es'),
 })
 
 </script>
