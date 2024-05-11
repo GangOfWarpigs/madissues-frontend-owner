@@ -31,13 +31,13 @@ export interface OrganizationReadModel{
 }
 export const getAllOrganizations = async function () : Promise<OrganizationReadModel[]> {
     const response = await api.get<apiCall<OrganizationReadModel[]>>("/organizations/");
-    if(response.status !== 200) throw Error("Failed getting organiztions")
+    if(response.data.error) throw Error(response.data.error.error_message)
     return response.data.success
 };
 
 export const getOrganizationById = async function (id : string) : Promise<OrganizationReadModel> {
     const response = await api.get<apiCall<OrganizationReadModel>>("/organizations/" + id + "/");
-    if(response.status !== 200) throw Error("Failed getting organiztions")
+    if(response.data.error) throw Error(response.data.error.error_message)
     return response.data.success
 };
 
@@ -53,7 +53,7 @@ export interface CourseReadModel {
 
 export const getOrganizationCourses = async function (id : string) : Promise<CourseReadModel[]> {
     const response = await api.get<apiCall<CourseReadModel[]>>("/organizations/" + id + "/courses/");
-    if(response.status !== 200) throw Error("Failed getting organiztions")
+    if(response.data.error) throw Error(response.data.error.error_message)
     return response.data.success
 };
 
@@ -70,7 +70,7 @@ export interface TeacherReadModel {
 
 export const getOrganizationTeachers = async function (id : string) : Promise<TeacherReadModel[]> {
     const response = await api.get<apiCall<TeacherReadModel[]>>("/organizations/" + id + "/teachers/");
-    if(response.status !== 200) throw Error("Failed getting organiztions")
+    if(response.data.error) throw Error(response.data.error.error_message)
     return response.data.success
 };
 
@@ -81,6 +81,24 @@ export interface DegreesReadModel {
 
 export const getOrganizationDegrees = async function (id : string) : Promise<DegreesReadModel[]> {
     const response = await api.get<apiCall<DegreesReadModel[]>>("/organizations/" + id + "/degrees/");
-    if(response.status !== 200) throw Error("Failed getting organiztions")
+    if(response.data.error) throw Error(response.data.error.error_message)
+    return response.data.success
+};
+
+export interface IntegrateRequest {
+    organization_id: string,
+    task_manager: string,
+    api_key: string,
+    api_token: string
+}
+
+export const integrateOrganization = async function (request: IntegrateRequest) : Promise<{message: str}> {
+    const response = await api.post<apiCall<IntegrateRequest>>("/task_manager/integrate/", request);
+    if(response.data.error) throw Error(response.data.error.error_message)
+    return response.data.success
+};
+export const getOrganizationTaskManager = async function (id : string) : Promise<{organization_id: string, task_manager_id : string}> {
+    const response = await api.get<apiCall<OrganizationReadModel>>("/organizations/" + id + "/task_manager");
+    if(response.data.error) throw Error(response.data.error.error_message)
     return response.data.success
 };

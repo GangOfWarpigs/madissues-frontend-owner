@@ -2,13 +2,32 @@
     import {useForm} from "vee-validate";
     import InputRichText from "@/components/InputRichText.vue";
     import Input from "@/components/Input.vue";
+    import {useRoute} from "vue-router";
+    import {useQuery} from "@tanstack/vue-query";
+    import {getOrganizationById, OrganizationReadModel} from "@/api/organizations.ts";
     
     const {} = useForm()
+
+
+    const route = useRoute()
+    const id = route.params["id"] as string
+
+    const { data, isSuccess } = useQuery<OrganizationReadModel>({
+      queryKey: ["organizations", id],
+      queryFn: () => getOrganizationById(id),
+    });
+
+    const {} = useForm({
+      initialValues: data
+    })
+
+
+
 </script>
 
 <template>
     <img class="w-[100px] h-[100px] rounded-full bg-gray-100">
-    <h1 class="font-semibold text-3xl mt-5">Delegación de estudiantes ULPGC</h1>
+    <h1 class="font-semibold text-3xl mt-5">{{ data.name }}</h1>
     <div class="mt-5 p-8 bg-gray-100 rounded-2xl">
       <h1 class="text-lg font-semibold mb-5">Configura tu cuenta</h1>
       <Input name="name" placeholder="Write a name..." className="bg-white !p-3 !mb-2" label="name" type="text"></Input>

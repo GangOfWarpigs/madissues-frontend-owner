@@ -20,7 +20,7 @@ const calculateGradient =  (color1: string, color2: string) => `background: line
         </div>
         <div  class="flex w-full max-w-[1400px] justify-center gap-10">
             <router-link v-for="org in data" :to="`/app/projects/${org.id}/home`" class="cursor-pointer group hover:scale-[1.1] transition-all duration-500">
-                <img :style="`${calculateGradient(org.primary_color, org.secondary_color)};`" :src="baseUrl + '/' + org.logo" class="h-[180px] w-[180px] bg-blue-500 rounded-lg  "/>
+                <img :style="`${calculateGradient(org.primary_color, org.secondary_color)};`" :src="baseUrl + '/media/organizations/' + org.logo" class="h-[180px] w-[180px] bg-blue-500 rounded-lg  "/>
                 <div class=" text-gray-500 group-hover:text-gray-700  flex justify-center mt-3 font-semibold text-xl transition-all">
                     {{ org.name }}
                 </div>
