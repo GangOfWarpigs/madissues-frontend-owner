@@ -7,6 +7,7 @@ import {TeacherReadModel, getOrganizationTeachers} from "@/api/organizations.ts"
 import ProjectCreateTeachersForm
   from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectCreateTeachersForm.vue";
 import PageContainer from '@/components/PageContainer.vue';
+import Empty from "@/components/Empty.vue";
 
 const route = useRoute()
 const id = route.params["id"] as string
@@ -27,6 +28,7 @@ const { data, isSuccess } = useQuery<TeacherReadModel[]>({
                 <input class="bg-gray-100 p-2 px-3 rounded-lg" placeholder="Search by teacher...">
                 <ProjectCreateTeachersForm></ProjectCreateTeachersForm>
             </div>
+            <Empty v-if="isSuccess && data?.length == 0"></Empty>
             <div v-if="isSuccess" class="gap-2 flex flex-col">
                 <div  v-for="teacher in data" class="w-full bg-gray-100 p-5 rounded-xl flex items-center gap-4 hover:bg-gray-200 cursor-pointer transition-all">
                     <div class="w-[50px] h-[50px] bg-gray-500 rounded-full">
