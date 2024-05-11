@@ -23,9 +23,7 @@ const prev = () => {
 
 const next = async () => {
   const isValid = await validate();
-  console.log(schemas[steps.value])
   if (isValid.valid) {
-
     if(steps.value < 3)  steps.value++;
     else handle()
   }
