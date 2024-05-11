@@ -21,14 +21,15 @@ function openModal() {
   isOpen.value = true
 }
 
-const {title, url, name} = defineProps<{name:string, title: string, url : string}>();
+const {title, url, name, formSchema} = defineProps<{name:string, title: string, url : string, formSchema:any}>();
 
 const route = useRoute()
 const id = route.params["id"] as string
 
 const { handleSubmit} = useForm<any>({
+  validationSchema: formSchema,
   initialValues: {
-    organization_id: id
+    organization_id: id,
   }
 })
 const queryClient = useQueryClient()
@@ -43,6 +44,8 @@ const createFn = async function (request: any ) {
   return response.data.success
 };
 
+
+
 const {mutate, error} = useMutation({
       mutationFn: createFn,
       onSuccess() {
@@ -51,6 +54,7 @@ const {mutate, error} = useMutation({
       },
     }
 )
+
 
 const submit = handleSubmit((values) => mutate(values))
 

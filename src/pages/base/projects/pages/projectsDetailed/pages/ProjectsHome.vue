@@ -1,17 +1,13 @@
 <script setup lang="ts">
 import BarChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/BarChart.vue";
-import {ref} from "vue";
 import DoughnutChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/DoughnutChart.vue";
 import LineChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/LineChart.vue";
 import PageContainer from '@/components/PageContainer.vue';
-
-const courses = ref(["Primer año", "Segundo año", "Tercer año", "Cuarto año"])
-const selectedCourse = ref(courses.value[0]);
-
 </script>
 
 <template>
 <PageContainer>
+
 <div class=" w-full flex flex-col gap-4">
   <div>
     <h1 class="text-3xl font-semibold">Welcome back again</h1>
