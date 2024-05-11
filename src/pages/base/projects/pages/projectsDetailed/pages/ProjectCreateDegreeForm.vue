@@ -15,6 +15,5 @@ const id = route.params["id"] as string
 
 const schema = yup.object({
   name: yup.string().required("Name is required*"),
-
 })
 </script>

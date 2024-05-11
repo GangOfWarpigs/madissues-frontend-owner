@@ -3,8 +3,8 @@
   <CreateForm :url="'/organizations/'+id+'/teachers/'" title="Create new teacher" name="Create new teacher" :formSchema="schema">
     <div class="flex flex-col gap-3">
       <div class=" grid-cols-2 grid gap-3">
-        <SmallInput name="first_name" class-name="" label="First name" placeholder="Name of the degree" type=""></SmallInput>
-        <SmallInput name="last_name" class-name="" label="Last name" placeholder="Name of the degree" type=""></SmallInput>
+        <SmallInput name="first_name" class-name="" label="First name" placeholder="First name of the teacher" type=""></SmallInput>
+        <SmallInput name="last_name" class-name="" label="Last name" placeholder="Last name of the teacher" type=""></SmallInput>
       </div>
       <SmallInput name="email" class-name="" label="Email" placeholder="teacher email" type=""></SmallInput>
       <SmallInput name="office_link" class-name="" label="Office link" placeholder="office link" type=""></SmallInput>
