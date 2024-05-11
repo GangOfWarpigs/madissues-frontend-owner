@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import BarChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/BarChart.vue";
-import {ref} from "vue";
 import DoughnutChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/DoughnutChart.vue";
 import LineChart from "@/pages/base/projects/pages/projectsDetailed/pages/components/LineChart.vue";
 import PageContainer from '@/components/PageContainer.vue';
-
-const courses = ref(["Primer año", "Segundo año", "Tercer año", "Cuarto año"])
 </script>
 
 <template>

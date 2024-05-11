@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import {computed, ref} from 'vue';
 import FormButton from '../../../components/FormButton.vue';
 import Input from '../../../components/Input.vue';
 import InputFile from '../../../components/InputFile.vue';
@@ -9,6 +9,7 @@ import {  useRouter } from 'vue-router'
 import {useForm} from "vee-validate";
 import {useMutation, useQueryClient} from "@tanstack/vue-query";
 import {createOrganization, CreateOrganizationRequest} from "@/api/organizations.ts";
+import * as yup from "yup";
 
 const steps = ref(0)
 const router = useRouter()
@@ -20,16 +21,46 @@ const prev = () => {
     steps.value--
 } 
 
-const next = () => {
+const next = async () => {
+  const isValid = await validate();
+  console.log(schemas[steps.value])
+  if (isValid.valid) {
+
     if(steps.value < 3)  steps.value++;
     else handle()
+  }
 }
 
+const schemas = [
+  yup.object({
+    name: yup.string().required("Name is required*").max(280),
+    contact_info: yup.string().required("Contact info is required*").max(80),
+  }),
+  yup.object({
+    logo: yup.string().required("Logo is required*"),
+  }),
+  yup.object({
+    description: yup.string().required("Description is required*").max(280),
+  }),
+    yup.object({
+      primary_color: yup.string().required("Primary color is required*"),
+      secondary_color: yup.string().required("Secondary color is required*"),
+    })
+]
 
-const {resetForm, handleSubmit, values} = useForm<CreateOrganizationRequest>({
+const currentSchema = computed(() => {
+  return schemas[steps.value];
+});
+
+const {resetForm, handleSubmit, validate, values} = useForm<CreateOrganizationRequest>({
+  validationSchema: currentSchema,
   initialValues: {
     name: "",
-    description: ""
+    description: "",
+    contact_info: "",
+    logo: "",
+    primary_color: "",
+    secondary_color: ""
   },
   keepValuesOnUnmount: true
 })
