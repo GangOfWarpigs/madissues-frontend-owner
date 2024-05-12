@@ -22,6 +22,7 @@
   <CreateForm title="Add course" name="Add course" :url="'/organizations/'+id+'/courses/'" :formSchema="schema">
     <SmallInput label="Name" placeholder="Write a name..." name="name" type="text" className="mb-4"/>
     <SmallInput label="Code" placeholder="Write the course's code name..." name="code" type="text" className="mb-4"/>
+    <SmallInput label="Course year" placeholder="Write the course's year..." name="year" type="number" className=""/>
     <div class="mt-5">
       <InputIconPicker label="Icon" name="icon"/>
     </div>
