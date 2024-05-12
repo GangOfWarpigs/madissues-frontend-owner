@@ -27,3 +27,17 @@ export const signUpFn = async function (request: SignUpRequest ) {
     }
     return response.data.success
 };
+
+export interface Owner {
+    id: string,
+    email: string,
+    first_name: string,
+    last_name: string,
+    phone_number: string
+}
+export async function getOwner() {
+    const request = await api.get<apiCall<Owner>>("/owners/me/");
+    if (request.data.error !== null) throw Error(request.data.error.error_message);
+    console.log(request.data.success as Owner);
+    return request.data.success as Owner;
+} 

@@ -19,9 +19,9 @@ const { data, isSuccess } = useQuery<OrganizationReadModel>({
         <div class="flex flex-col justify-between h-full">
             <div class="flex flex-col gap-3 ">
               <div class="flex items-center mb-8 gap-5">
-                <img  width="42" :src="baseUrl + '/' + data.logo" class="rounded-full">
+                <img  width="42" :src="baseUrl + '/' + data?.logo" class="rounded-full">
                 <h1 class="font-semibold text-2xl">
-                  {{ data.name }}
+                  {{ data?.name }}
                 </h1>
               </div>
                 <router-link :to="{name: 'home'}" active-class="!bg-red-500 !text-white" class="text-gray-400 hover:bg-gray-200 hover:text-gray-600 px-4 py-3 rounded-xl cursor-pointer font-semibold flex gap-3 items-center">

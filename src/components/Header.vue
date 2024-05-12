@@ -1,3 +1,23 @@
+<script setup lang="ts">
+  import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+  import {useRouter} from "vue-router";
+  import { useQuery } from '@tanstack/vue-query';
+  import { getOwner, Owner } from '@/api/owners';
+
+  const router = useRouter()
+
+  function clearStorage(){
+    console.log("hello world")
+    localStorage.removeItem("token")
+    router.push("/auth/signin/")
+  }
+
+  const { data:owner } = useQuery<Owner>({
+    queryKey: ["owner"],
+    queryFn: async () => await getOwner()
+  });
+</script>
+
 <template>
   <Menu as="div" class=" text-left absolute top-[10px] right-[70px]">
     <div>
@@ -6,7 +26,7 @@
           <img class="h-[30px] w-[30px] rounded-full mr-2">
         </div>
         <p class="font-semibold text-gray-700 mb-0">
-        Jose R Peña Seco
+        {{ owner?.first_name }} {{ owner?.last_name }}
         </p>
         <vue-icon name="fa-chevron-down" scale="0.7"/>
       </MenuButton>
@@ -24,15 +44,3 @@
   </Menu>
 </template>
 
-<script setup>
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import {useRouter} from "vue-router";
-
-const router = useRouter()
-
-function clearStorage(){
-  console.log("hello world")
-  localStorage.removeItem("token")
-  router.push("/auth/signin/")
-}
-</script>
