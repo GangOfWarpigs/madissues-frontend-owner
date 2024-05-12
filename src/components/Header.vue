@@ -23,7 +23,7 @@
     <div>
       <MenuButton class="bg-gray-100 px-6 py-3 rounded-full  shadow-gray-200 flex items-center gap-2">
         <div>
-          <img class="h-[30px] w-[30px] rounded-full mr-2">
+          <img class="h-[30px] w-[30px] rounded-full mr-2" src="../assets/images/default-avatar.webp">
         </div>
         <p class="font-semibold text-gray-700 mb-0">
         {{ owner?.first_name }} {{ owner?.last_name }}
