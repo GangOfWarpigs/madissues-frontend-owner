@@ -58,19 +58,18 @@ export const base = [
                                 component: ProjectsConfiguration,
                                 children: [
                                     {
-                                        path: "general",
-                                        component: ProjectGeneralSettings
-                                    },
-                                    {
                                         path: "organization",
+                                        name: "organization_settings",
                                         component: ProjectOrganizationSettings
                                     },
                                     {
                                         path: "integrations",
+                                        name: "integrations",
                                         component: ProjectIntegrations
                                     },
                                     {
                                         path: "change",
+                                        name: "change_project",
                                         component: ProjectChange
                                     }
                                 ]

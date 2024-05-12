@@ -1,14 +1,9 @@
 <script lang="ts" setup>
   import { useRoute } from 'vue-router';
-  import {useQuery} from "@tanstack/vue-query";
-  import {getOrganizationById, OrganizationReadModel} from "@/api/organizations.ts";
-  import {useForm} from "vee-validate";
-
-
+  
   const currentRoute: string = useRoute().fullPath;
   const splittedRoute: string[] = currentRoute.split('/');
   splittedRoute.pop();
-  const baseRoute: string = splittedRoute.join('/');
 </script>
 <template>
   <div class="w-full min-h-screen flex pl-[300px]">
@@ -18,7 +13,7 @@
           <h1 class="text-lg font-semibold text-gray-700">Configuration</h1>
           <li class="flex">
             <router-link 
-              :to="baseRoute + '/organization'" 
+              :to="{ name: 'organization_settings'}" 
               active-class="!bg-gray-100" 
               class="px-3 py-2 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-600"
               replace>
@@ -27,7 +22,7 @@
           </li>
           <li class="flex">
             <router-link 
-              :to="baseRoute + '/integrations'" 
+              :to="{ name: 'integrations'}" 
               active-class="!bg-gray-100" 
               class="px-3 py-2 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-600"
               replace>
@@ -37,7 +32,7 @@
           <li class="flex">
             <router-link 
               to="/app/projects/"
-              class="px-3 py-2 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center text-gray-600 !bg-red-500/10 text-red-500"
+              class="px-3 py-2 w-full hover:bg-gray-200 rounded-xl cursor-pointer font-semibold flex gap-3 items-center !bg-red-500/10 text-red-500"
               replace>
               Change Project
             </router-link>
