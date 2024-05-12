@@ -13,6 +13,7 @@
     name: yup.string().required("Name is required*").min(2, 'At least 2 characters').max(60, 'At most 60 characters'),
     code: yup.string().required("Code is required*").min(2, 'At least 2 characters').max(8, 'At most 8 characters'),
     icon: yup.string().required("Icon is required*").max(60),
+    year: yup.string().required("Year is required*").matches(/^[1-4]$/, 'Must be between 1 and 4'),
     primary_color: yup.string().required("Primary color is required*").matches(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, 'Must be a valid hex color'),
     secondary_color: yup.string().required("Secondary color is required*").matches(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, 'Must be a valid hex color'),
   })
