@@ -55,8 +55,8 @@ const handle = handleSubmit((values) => mutate(values))
           <h1 class="text-xl  text-gray-500 mb-5">Use your credentials to continue</h1>
         </div>
 
-        <Input name="email" placeholder="Email" label="Email"/>
-        <Input type="password" name="password" placeholder="password" label="Password"/>
+        <Input name="email" placeholder="Email" label="Email" class-name="email" type="email"/>
+        <Input name="password" placeholder="password" label="Password" class-name="password" type="password" />
         <FormButton @click="handle">SignIn</FormButton>
         <button @click="router.replace('/auth/signup')" class="mt-3 w-full bg-gray-100 px-4 py-3 rounded-full font-semibold text-gray-600 hover:bg-gray-200">Create an account</button>
         <p class="text-red-500">{{ error }}</p>

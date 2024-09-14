@@ -7,8 +7,8 @@ import ProjectsStudents from "../pages/base/projects/pages/projectsDetailed/page
 import ProjectsTeachers from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsTeachers.vue";
 import ProjectsCourses from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsCourse.vue";
 import ProjectsConfiguration from "../pages/base/projects/pages/projectsDetailed/pages/ProjectsConfiguration.vue";
-import ProjectGeneralSettings from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectGeneralSettings.vue";
-import ProjectOrganizationSettings from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectOrganizationSettings.vue";
+import ProjectOrganizationSettings
+    from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectOrganizationSettings.vue";
 import ProjectIntegrations from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectIntegrations.vue";
 import ProjectChange from "@/pages/base/projects/pages/projectsDetailed/pages/ProjectChange.vue";
 
